@@ -1,0 +1,291 @@
+2.1
+
+Console.WriteLine("Введите значения a, b, c");
+int a = int.Parse(Console.ReadLine());
+int b = int.Parse(Console.ReadLine());
+int c = int.Parse(Console.ReadLine());
+int V =  a * b * c;
+Console.WriteLine(V);
+
+
+
+2.2
+
+Console.WriteLine("Введите x:");
+int x = int.Parse(Console.ReadLine());
+
+Console.WriteLine("Введите y:");
+int y = int.Parse(Console.ReadLine());
+
+if (x >= -1 && y >= -1)
+{
+    Console.WriteLine("Точка принадлежит");
+}
+else
+{
+    Console.WriteLine("Точка не принадлежит");
+}
+
+
+
+2.3
+
+int n = 0;
+while (n <= 4)
+{
+    Console.WriteLine("Введите длину массива (не менее 4-х элементов)");
+    n =int.Parse(Console.ReadLine());
+}
+int[] nn = new int[n];
+for (int i = 0; i < n; i++)
+{
+    Console.WriteLine("Введите {0} элемент массива", i + 1);
+    nn[i] = Int32.Parse(Console.ReadLine());
+
+}
+int sr = nn[0] + nn[nn.Length - 1];
+int sum = 0;
+for (int i = 2; i < nn.Length - 1; i += 2)
+{
+    if (nn[i] > sum)
+    {
+        sum += nn[i];
+    }
+}
+Console.WriteLine("Сумма {0}", sum);
+Console.ReadKey();
+
+
+2.4
+
+int n, s, m;
+Console.WriteLine("Введите число");
+n = Convert.ToInt32(Console.ReadLine());
+m = 1;
+while (n > 0)
+    {
+       m *= n % 10;
+       n = n / 10;
+    }
+Console.WriteLine($"Произведение: {m}");
+
+
+2.5
+
+Console.WriteLine("Введите число n");
+int n = Int32.Parse(Console.ReadLine());
+for (int i = 1; i < n; i++)
+{
+    if (i * i >= n) ;
+
+    else
+    {
+        Console.WriteLine("\nПервое число, квадрат которого больше n: {0}", i);
+        break;
+    }
+}
+
+
+2.6
+
+const int ftn = 100, ltn = 999;
+int n = 0, m = 0;
+Console.WriteLine(@"все трехзначные числа, чьи квадраты оканчиваются тремя
+цифрами, которые и составляют искомые числа" + Environment.NewLine );
+n = ftn;
+while (n <= ltn)
+{
+    m = n * n;
+    if ((m % n == 0) && (m % 10 == n % 10) && (m % 100 == n % 100) && (m % 1000 == n % 1000))
+    {
+        Console.WriteLine($"Число: {n} | Его квадрат: {m}");
+    }
+    n++;
+}
+
+
+
+3.1
+
+using System;
+namespace god
+{ 
+    class program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите желаемый год");
+            int god = Int32.Parse(Console.ReadLine());
+            DateTime date1 = new DateTime(god, 1, 31);
+            DateTime date2 = new DateTime(god, 2, 28);
+            DateTime date3 = new DateTime(god, 3, 31);
+            DateTime date4 = new DateTime(god, 4, 30);
+            DateTime date5 = new DateTime(god, 5, 31);
+            DateTime date6 = new DateTime(god, 6, 30);
+            DateTime date7 = new DateTime(god, 7, 31);
+            DateTime date8 = new DateTime(god, 8, 31);
+            DateTime date9 = new DateTime(god, 9, 30);
+            DateTime date10 = new DateTime(god, 10, 31);
+            DateTime date11 = new DateTime(god, 11, 30);
+            DateTime date12 = new DateTime(god, 12, 31);
+            Console.WriteLine(Thursday(date1));
+            Console.WriteLine(Thursday(date2));
+            Console.WriteLine(Thursday(date3));
+            Console.WriteLine(Thursday(date4));
+            Console.WriteLine(Thursday(date5));
+            Console.WriteLine(Thursday(date6));
+            Console.WriteLine(Thursday(date7));
+            Console.WriteLine(Thursday(date8));
+            Console.WriteLine(Thursday(date9));
+            Console.WriteLine(Thursday(date10));
+            Console.WriteLine(Thursday(date11));
+            Console.WriteLine(Thursday(date12));
+
+            static DateTime Thursday(DateTime data)
+            {
+                while (data.DayOfWeek != DayOfWeek.Thursday)
+                {
+                    data = data.AddDays(-1);
+                }
+                return data;
+            }
+
+        }
+    }
+}
+
+
+
+3.2
+
+using System;
+namespace igra
+{ 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введтие максимальное значение");
+            int max = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите количество попыток");
+            int kol = int.Parse(Console.ReadLine());
+            Random Random = new Random();
+            int chislo = Random.Next(1, max);
+            for (int i = 0; i < kol; i++)
+            {
+                int vvodimoechislo = int.Parse(Console.ReadLine());
+                            
+                 if (vvodimoechislo < chislo)
+                {
+                    Console.WriteLine("Больше");
+                }
+                 if (vvodimoechislo > chislo)
+                {
+                    Console.WriteLine("Меньше");
+                }
+                 if (vvodimoechislo == chislo)
+                {
+                    Console.WriteLine("Вы угадали");
+                    break;
+                }
+                 if (i == kol)
+                {
+                    Console.WriteLine("Попытки закончились");
+                    break;
+                }
+            }
+        }
+    }
+}
+
+
+3.3
+
+using System;
+namespace peremeshkamassiva
+{
+    class ProgramMain
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            List<int> massiv = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+            int n = massiv.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                int value = massiv[k];
+                massiv[k] = massiv[n];
+                massiv[n] = value;
+            }
+
+            foreach (int i in massiv)
+                Console.Write(i + " ");
+        }
+    }
+}
+
+
+
+3.4
+
+using System;
+namespace peremeshkamassiva
+{
+    class ProgramMain
+    {
+        static void Main(string[] args)
+        {
+            Random random = new Random();
+            List<int> massiv = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+            int n = massiv.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = random.Next(n + 1);
+                int value = massiv[k];
+                massiv[k] = massiv[n];
+                massiv[n] = value;
+            }
+
+            foreach (int i in massiv)
+                Console.Write(i + " ");
+        }
+    }
+}
+
+
+
+
+3.5
+
+using System;
+namespace chislarandomnii
+{
+    class Program
+    {
+        public int Random(int a, int b)
+        {
+            Random Random = new Random();
+            return Random.Next(a, b);
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите начальный отрезок");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите конечный отрезок");
+            int b = int.Parse(Console.ReadLine());
+           
+            for (int i = 0; i < 100; i++)
+            {
+                Program clychainoe = new Program();
+                Console.Write($"{clychainoe.Random(a,b)}, ");
+            }
+
+        }
+
+    }
+}
