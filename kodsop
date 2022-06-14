@@ -1,73 +1,62 @@
 2.1
 
-Console.WriteLine("Введите значения a, b, c");
+Console.WriteLine("Введите длинну комнаты");
 int a = int.Parse(Console.ReadLine());
+Console.WriteLine("Введите ширину комнаты");
 int b = int.Parse(Console.ReadLine());
+Console.WriteLine("Введите высоту комнаты");
 int c = int.Parse(Console.ReadLine());
-int V =  a * b * c;
-Console.WriteLine(V);
+  int V = a* b* c;
+Console.WriteLine((double) V / 100 * 21);
 
 
 
 2.2
 
-Console.WriteLine("Введите x:");
-int x = int.Parse(Console.ReadLine());
-
-Console.WriteLine("Введите y:");
-int y = int.Parse(Console.ReadLine());
-
-if (x >= -1 && y >= -1)
+Console.WriteLine("Введите числа");
+int a = int.Parse(Console.ReadLine());
+int b = int.Parse(Console.ReadLine());
+int c = int.Parse(Console.ReadLine());
+int M = 0;
+if (a > b && a > c)
 {
-    Console.WriteLine("Точка принадлежит");
+    M = a;
+}
+if (b > c && b > a)
+{
+    M = b;
 }
 else
 {
-    Console.WriteLine("Точка не принадлежит");
+    M = c;
 }
+Console.WriteLine($"Самое большое число: {M}");
 
 
 
 2.3
 
-int n = 0;
-while (n <= 4)
-{
-    Console.WriteLine("Введите длину массива (не менее 4-х элементов)");
-    n =int.Parse(Console.ReadLine());
-}
-int[] nn = new int[n];
-for (int i = 0; i < n; i++)
-{
-    Console.WriteLine("Введите {0} элемент массива", i + 1);
-    nn[i] = Int32.Parse(Console.ReadLine());
-
-}
-int sr = nn[0] + nn[nn.Length - 1];
-int sum = 0;
-for (int i = 2; i < nn.Length - 1; i += 2)
-{
-    if (nn[i] > sum)
-    {
-        sum += nn[i];
-    }
-}
-Console.WriteLine("Сумма {0}", sum);
-Console.ReadKey();
+var array = new int[] { 2, 20, 101, 9, 3, 27, 33, 3};
+int first = array.First();
+int last = array.Last();
+int countDivLast = array.Count(i => i % first == 0);
+int countDivFirst = array.Count(i => i % last == 0);
+Console.WriteLine($"Чисел котрые делатся на первый элемент: {countDivLast}");
+Console.WriteLine($"Чисел котрые делятся на последний элемент: {countDivFirst}");
 
 
 2.4
 
-int n, s, m;
-Console.WriteLine("Введите число");
-n = Convert.ToInt32(Console.ReadLine());
-m = 1;
-while (n > 0)
-    {
-       m *= n % 10;
-       n = n / 10;
-    }
-Console.WriteLine($"Произведение: {m}");
+int v = 0;
+Console.WriteLine("Введите число : ");
+int n = int.Parse(Console.ReadLine());
+while (n != 0)
+{
+   v = v * 10;
+   v += n % 10;
+   n = n / 10;
+}
+Console.WriteLine($"Перевернутый результат: {v}");
 
 
 2.5
@@ -103,20 +92,17 @@ Console.WriteLine("Сумма нечетных чисел =" + Sum);
 
 2.6
 
-const int ftn = 100, ltn = 999;
-int n = 0, m = 0;
-Console.WriteLine(@"все трехзначные числа, чьи квадраты оканчиваются тремя
-цифрами, которые и составляют искомые числа" + Environment.NewLine );
-n = ftn;
-while (n <= ltn)
+int a = 23;
+int b = 37;
+int sum = 0;
+for (int i = a; i < b; i++) 
 {
-    m = n * n;
-    if ((m % n == 0) && (m % 10 == n % 10) && (m % 100 == n % 100) && (m % 1000 == n % 1000))
+    if (i % 4 == 0)
     {
-        Console.WriteLine($"Число: {n} | Его квадрат: {m}");
+        sum += i;
     }
-    n++;
 }
+Console.WriteLine($"Сумма положительных чисел кратных четырем: {sum}") ;
 
 
 
