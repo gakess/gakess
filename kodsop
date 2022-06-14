@@ -72,18 +72,33 @@ Console.WriteLine($"Произведение: {m}");
 
 2.5
 
-Console.WriteLine("Введите число n");
-int n = Int32.Parse(Console.ReadLine());
-for (int i = 1; i < n; i++)
+int n;
+Console.WriteLine("Введите размер последовательности: ");
+n = int.Parse(Console.ReadLine());
+float[] massiv = new float[n];
+Console.WriteLine("Введите элементы последовательности(Первый элемент должен быть нечетным!): ");
+for (int g = 0; g < n; g++)
 {
-    if (i * i >= n) ;
+   massiv[g] = float.Parse(Console.ReadLine());
+ }
+float Sum = 0;
+int i = 0;
+while (i < n) 
+{
+    
+    if (massiv[i] % 2 == 1)
+    {
+        Sum += massiv[i];
+        i++;
 
+    }
     else
     {
-        Console.WriteLine("\nПервое число, квадрат которого больше n: {0}", i);
         break;
+        
     }
 }
+Console.WriteLine("Сумма нечетных чисел =" + Sum);
 
 
 2.6
